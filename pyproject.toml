@@ -4,7 +4,24 @@ version = "0.1.0"
 description = "uv workspace for Graph RAG projects"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "astrapy>=2.0.1",
+    "dotenv>=0.9.9",
+    "graph-rag-example-helpers>=0.8.0",
+    "immutabledict>=4.2.1",
+    "langchain-astradb>=0.6.0",
+    "langchain-community>=0.0.21",
+    "langchain-core>=0.3.59",
+    "langchain-graph-retriever>=0.8.0",
+    "langchain-openai>=0.3.16",
+    "networkx>=3.4.2",
+    "pip>=25.0",
+    "python-dotenv>=1.1.0",
+    "python-jose[cryptography]>=3.3.0",
+    "simsimd>=6.2.1",
+    "spacy>=3.8.5",
+    "supabase>=2.3.4",
+]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 
