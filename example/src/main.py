@@ -95,10 +95,16 @@ async def main() -> None:
         "수진이는 어디에 살고 있나요?",
         "부산에 대해 알려진 정보는 무엇인가요?",
     ]
-
-    # Process questions
+    
     for question in questions:
         print(f"\nQuestion: {question}")
+        # Get documents from the retriever
+        docs = await lazy_graph_rag.retriever.aget_relevant_documents(question)
+        
+        # Visualize the document graph
+        lazy_graph_rag.visualize_graph(docs, save_path=f"graph_{question.replace(' ', '_')}.png")
+        
+        # Get the answer
         answer = await lazy_graph_rag.ainvoke(question)
         print(f"Answer: {answer}")
 

@@ -1,7 +1,7 @@
 """LazyGraphRAG implementation."""
 
 from collections.abc import Iterable
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, List
 
 from graph_retriever.edges import EdgeSpec, MetadataEdgeFunction
 from langchain_core.language_models import BaseLanguageModel
@@ -9,6 +9,9 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_graph_retriever import GraphRetriever
 from langchain_graph_retriever.document_graph import create_graph, group_by_community
+from langchain_core.documents import Document
+import networkx as nx
+import matplotlib.pyplot as plt
 
 from .claims import Claim, ClaimsProcessor
 
@@ -108,4 +111,41 @@ Claims:
             str: Answer to the question
         """
         result = await self.chain.ainvoke(question)
-        return result.content 
+        return result.content
+
+    def visualize_graph(self, documents: List[Document], save_path: Optional[str] = None):
+        """
+        Visualize the document graph using NetworkX and matplotlib.
+        
+        Args:
+            documents: List of documents to create the graph from
+            save_path: Optional path to save the graph visualization. If None, displays the graph.
+        """
+        document_graph = create_graph(
+            documents=documents,
+            edges=self.edges,
+        )
+        
+        plt.figure(figsize=(12, 8))
+        pos = nx.spring_layout(document_graph)
+        
+        # Draw nodes
+        nx.draw_networkx_nodes(document_graph, pos, node_color='lightblue', 
+                              node_size=1000, alpha=0.7)
+        
+        # Draw edges
+        nx.draw_networkx_edges(document_graph, pos, edge_color='gray', 
+                              arrows=True, arrowsize=20)
+        
+        # Add labels
+        labels = {node: f"Doc {node[:8]}..." for node in document_graph.nodes()}
+        nx.draw_networkx_labels(document_graph, pos, labels, font_size=8)
+        
+        plt.title("Document Graph Visualization")
+        
+        if save_path:
+            plt.savefig(save_path)
+        else:
+            plt.show()
+        
+        plt.close() 
