@@ -1,3 +1,5 @@
+.env
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -174,3 +176,4 @@ cython_debug/
 /.luarc.json
 
 .DS_Store
+example/data/para_with_hyperlink.zip
