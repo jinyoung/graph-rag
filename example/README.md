@@ -26,10 +26,6 @@ LANGCHAIN_API_KEY=your_langchain_key  # Optional
 ASTRA_DB_KEYSPACE=your_keyspace  # Optional
 ```
 
-4. Download the Wikipedia dataset:
-- Download `para_with_hyperlink.zip` from [2wikimultihop](https://github.com/Alab-NII/2wikimultihop)
-- Place it in the `data` directory
-
 ## Usage
 
 Run the example:
