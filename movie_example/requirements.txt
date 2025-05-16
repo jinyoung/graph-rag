@@ -1,0 +1,9 @@
+python-dotenv>=1.0.0
+pandas>=2.0.3
+langchain-openai>=0.3.16
+langchain-graph-retriever>=0.8.0
+langchain-astradb>=0.6.0
+langchain-core>=0.3.58
+graph-retriever>=0.8.0
+networkx>=3.4.2
+pydantic>=2.10.4 

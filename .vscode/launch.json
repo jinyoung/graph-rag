@@ -6,12 +6,21 @@
     "configurations": [
 
         {
-            "name": "Debugpy Old: Current File",
+            "name": "example",
             "type": "debugpy-old",
             "request": "launch",
             "program": "${workspaceFolder}/example/src/main.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/example",
+            "justMyCode": false
+        },
+        {
+            "name": "movie_example",
+            "type": "debugpy-old",
+            "request": "launch",
+            "program": "${workspaceFolder}/movie_example/main.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/movie_example",
             "justMyCode": false
         }
     ]
